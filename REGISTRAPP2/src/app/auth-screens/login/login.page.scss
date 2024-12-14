@@ -160,9 +160,9 @@ ion-content {
 }
 
 .create-account-btn {
-  background: transparent;
+  background: white;  // Cambiado de transparent a white
   border: 1px solid rgba(255, 255, 255, 0.3);
-  color: white;
+  color: #2E2152;    // Cambiado de white a #2E2152 para que el texto sea visible en fondo blanco
   padding: 6px 25px;
   border-radius: 16px;
   font-size: 0.85rem;
@@ -172,7 +172,7 @@ ion-content {
   transition: all 0.3s ease;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.9); // Ajustado el hover para que sea visible
     transform: translateY(-1px);
   }
 }
@@ -258,4 +258,22 @@ ion-alert {
 
 .container > * {
   animation: fadeIn 0.5s ease-out forwards;
+}
+
+.signup-prompt {
+  text-align: center;
+  margin-top: 20px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+
+  a {
+    color: white;
+    text-decoration: none;
+    margin-left: 5px;
+    font-weight: 500;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
