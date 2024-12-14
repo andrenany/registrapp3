@@ -1,0 +1,139 @@
+:host {
+  .background-image {
+    --background: #2B1B47;
+    height: 100vh;
+  }
+
+  .content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding: 2rem;
+    padding-top: 2rem; // Reducido de 4rem a 2rem para subir todo el contenido
+  }
+
+  .page-title {
+    color: white;
+    font-size: 2rem;
+    margin-bottom: 3rem; // Reducido de 4rem a 3rem para acercar el cuadrado al título
+    text-align: center;
+    width: 100%;
+    padding-top: 2rem;
+  }
+
+  .auth-container {
+    width: 90%;
+    max-width: 380px;
+    padding: 2rem;
+    background: rgba(78, 63, 102, 0.6);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    margin: 0 auto;
+  }
+
+  .form-container {
+    width: 100%;
+  }
+
+  .input-container {
+    margin-bottom: 1.2rem;
+  }
+
+  .custom-input {
+    --background: rgba(89, 74, 119, 0.6);
+    --border-radius: 8px;
+    --padding-start: 1rem;
+    --padding-end: 1rem;
+    margin-bottom: 0.5rem;
+    height: 48px;
+    
+    ion-icon {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 1.2rem;
+      margin-right: 4px;
+    }
+
+    ion-input {
+      --color: white;
+      --placeholder-color: rgba(255, 255, 255, 0.7);
+      font-size: 1rem;
+    }
+  }
+
+  .auth-button {
+    --background: rgba(78, 63, 102, 0.9);
+    --background-activated: rgba(78, 63, 102, 1);
+    --border-radius: 8px;
+    --color: white;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    height: 48px;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    
+    ion-icon {
+      margin-right: 8px;
+    }
+  }
+
+  .auth-link {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    
+    span {
+      color: rgba(255, 255, 255, 0.8);
+    }
+    
+    a {
+      color: #5582d7;
+      text-decoration: none;
+      margin-left: 0.5rem;
+      
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .error-message {
+    color: #ff4757;
+    font-size: 0.8rem;
+    margin-left: 1rem;
+    margin-top: 0.2rem;
+  }
+}
+
+ion-item {
+  --ion-item-background: transparent;
+  --border-color: transparent;
+  --highlight-height: 0;
+  --background: transparent;
+}
+
+ion-input {
+  --padding-start: 1rem;
+  --padding-end: 1rem;
+}
+
+.tooltip {
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 0.9rem;
+  color: #333;
+  position: absolute;
+  z-index: 10;
+  margin-top: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.error {
+  color: #ff4d4f;
+  font-size: 0.8rem;
+  margin-top: 5px;
+}

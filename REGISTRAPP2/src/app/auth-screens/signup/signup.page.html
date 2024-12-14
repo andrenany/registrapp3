@@ -1,0 +1,76 @@
+<ion-content [fullscreen]="true" class="background-image">
+  <div class="page-title">Creación de Usuario</div>
+  
+  <div class="auth-container">
+    <form [formGroup]="ionicForm" novalidate class="form-container">
+      <!-- Nombre completo -->
+      <div class="input-container">
+        <ion-item lines="none" class="custom-input">
+          <ion-input placeholder="Nombre completo" formControlName="fullname"></ion-input>
+          <ion-icon slot="end" name="person-outline"></ion-icon>
+        </ion-item>
+        <div *ngIf="ionicForm.controls['fullname'].touched && ionicForm.controls['fullname'].invalid" class="error-message">
+          <ion-text color="danger">El nombre completo es obligatorio.</ion-text>
+        </div>
+      </div>
+
+      <!-- Correo electrónico -->
+      <div class="input-container">
+        <ion-item lines="none" class="custom-input">
+          <ion-input placeholder="Correo electrónico" formControlName="email"></ion-input>
+          <ion-icon slot="end" name="mail-outline"></ion-icon>
+        </ion-item>
+        <div *ngIf="ionicForm.controls['email'].touched && ionicForm.controls['email'].invalid" class="error-message">
+          <ion-text color="danger">Introduce un correo válido.</ion-text>
+        </div>
+      </div>
+
+<!-- Campo de Contraseña -->
+<div class="input-container">
+  <ion-item lines="none" class="custom-input">
+    <ion-input 
+      type="password" placeholder="Contraseña" formControlName="password">
+    </ion-input>
+    <ion-icon slot="end" name="lock-closed-outline"></ion-icon>
+  </ion-item>
+  
+  <!-- Mensaje de error si la contraseña es inválida -->
+  <div *ngIf="ionicForm.controls['password'].touched && ionicForm.controls['password'].invalid" class="error-message">
+    <ul>
+      <li>Al menos 8 caracteres.</li>
+      <li>Una letra mayúscula y una minúscula.</li>
+      <li>Un número.</li>
+      <li>Un carácter especial.</li>
+    </ul>
+  </div>
+</div>
+
+
+      <!-- Teléfono de contacto -->
+      <div class="input-container">
+        <ion-item lines="none" class="custom-input">
+          <ion-input type="tel" placeholder="Teléfono de contacto" formControlName="contact"></ion-input>
+          <ion-icon slot="end" name="call-outline"></ion-icon>
+        </ion-item>
+        <div *ngIf="ionicForm.controls['contact'].touched && ionicForm.controls['contact'].invalid" class="error-message">
+          <ion-text color="danger">Introduce un número válido.</ion-text>
+        </div>
+      </div>
+
+      <!-- Botón de Crear cuenta -->
+      <ion-button expand="block" 
+                  (click)="signUP()" 
+                  [disabled]="!ionicForm.valid" 
+                  class="auth-button">
+        <ion-icon slot="start" name="person-outline"></ion-icon>
+        CREAR CUENTA
+      </ion-button>
+
+      <!-- Enlace para iniciar sesión -->
+      <div class="auth-link">
+        <span>¿Ya tienes una cuenta?</span>
+        <a [routerLink]="['/login']">Inicia sesión</a>
+      </div>
+    </form>
+  </div>
+</ion-content>

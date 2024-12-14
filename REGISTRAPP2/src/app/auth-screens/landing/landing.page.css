@@ -1,0 +1,34 @@
+@charset "UTF-8";
+.landing-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background-color: #D9CBB5; /* Color de fondo */
+  text-align: center;
+}
+
+.logo {
+  width: 150px;
+  /* Ajusta el tamaño según sea necesario */
+  margin-bottom: 20px;
+  /* Espacio inferior */
+}
+
+.welcome-title {
+  font-size: 24px;
+  /* Ajusta el tamaño de la fuente */
+  margin: 10px 0;
+  color: #000;
+  /* Color del texto para el título */
+}
+
+.info-text {
+  font-size: 16px;
+  /* Ajusta el tamaño de la fuente */
+  margin-bottom: 20px;
+  /* Espacio inferior */
+  color: #000;
+  /* Color del texto para la información */
+}/*# sourceMappingURL=landing.page.css.map */
