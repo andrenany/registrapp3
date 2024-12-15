@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { AlertController, LoadingController, ToastController, AnimationController } from '@ionic/angular';
+import { AlertController, LoadingController, ToastController } from '@ionic/angular';
 import { EstadoService } from 'src/app/services/estado.service';
 import { Storage } from '@ionic/storage-angular';
 import { QrService } from '../services/qr.service';
@@ -18,7 +18,6 @@ import { AttendanceService } from '../services/attendance.service';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
-  // Propiedades necesarias para el template
   tareasCercanas: Tarea[] = [];
   scanCount: number = 0;
   email: any;
@@ -74,15 +73,18 @@ export class HomePage implements OnInit {
   }
 
   async loadAsistencias() {
-    const totalAsistencias = await this.databaseService.getTotalAsistenciasEsperadas();
-    this.asisTotales = totalAsistencias;
+    try {
+      const totalAsistencias = await this.databaseService.getTotalAsistenciasEsperadas();
+      this.asisTotales = totalAsistencias;
 
-    // Usar el nuevo servicio para obtener asistencias en tiempo real
-    this.attendanceService.getAttendanceCount().subscribe(count => {
-      this.asisRegistradas = count;
-      this.actualizarProgreso();
-      this.cdr.detectChanges(); // Asegurar que la UI se actualice
-    });
+      this.attendanceService.getAttendanceCount().subscribe(count => {
+        this.asisRegistradas = count;
+        this.actualizarProgreso();
+        this.cdr.detectChanges();
+      });
+    } catch (error) {
+      console.error('Error al cargar asistencias:', error);
+    }
   }
 
   actualizarProgreso() {
@@ -90,20 +92,33 @@ export class HomePage implements OnInit {
   }
 
   async cargarReuniones() {
-    this.reuniones = await this.storage.get('reuniones') || [];
-    console.log('Reuniones cargadas:', this.reuniones);
+    try {
+      this.reuniones = await this.storage.get('reuniones') || [];
+      console.log('Reuniones cargadas:', this.reuniones);
+    } catch (error) {
+      console.error('Error al cargar reuniones:', error);
+    }
   }
 
   async Scaneo() {
     try {
       this.qr.scan = true;
       const qrData = await this.qrService.StarScan();
-      if (!qrData) {
-        throw new Error('El escaneo no retornó datos. Intente nuevamente.');
-      }
       
-      this.qr.scanResult = qrData;
-      await this.procesarAsistencia(qrData);
+      if (!qrData) {
+        throw new Error('No se obtuvieron datos del escaneo');
+      }
+
+      // Abrir el enlace en el navegador del dispositivo
+      window.open(qrData, '_system');
+      
+      // Incrementar el contador usando el método correcto
+      this.estadoService.incrementar();
+      
+      // Registrar la asistencia
+      await this.registrarAsistencia();
+      
+      await this.mostrarExito('Asistencia registrada correctamente');
       
     } catch (error) {
       console.error('Error en el escaneo:', error);
@@ -113,40 +128,20 @@ export class HomePage implements OnInit {
     }
   }
 
-  async procesarAsistencia(qrContent: string) {
+  async registrarAsistencia() {
     try {
-      const asistenciaData = JSON.parse(qrContent);
-      
-      // Verificar asistencia existente usando el nuevo servicio
-      const yaRegistrada = await this.attendanceService.checkExistingAttendance(
-        asistenciaData.eventoId,
-        this.email
-      );
-
-      if (yaRegistrada) {
-        await this.mostrarError('Ya registraste tu asistencia para este evento');
-        return;
-      }
-
-      // Registrar la asistencia usando el nuevo servicio
       await this.attendanceService.registerAttendance({
-        eventoId: asistenciaData.eventoId,
-        nombreEvento: asistenciaData.nombreEvento,
-        tipoEvento: asistenciaData.tipoEvento,
+        eventoId: Date.now().toString(),
+        nombreEvento: 'Asistencia registrada',
+        tipoEvento: 'Escaneado',
         usuarioEmail: this.email,
         fecha: new Date().toISOString()
       });
-
-      // Actualizar contador y progreso
-      this.scanCount++;
-      await this.mostrarExito(`Asistencia registrada para: ${asistenciaData.nombreEvento}`);
       
-      // Actualizar el progreso local
       await this.loadAsistencias();
-        
     } catch (error) {
-      console.error('Error al procesar asistencia:', error);
-      await this.mostrarError('Error al registrar la asistencia');
+      console.error('Error al registrar asistencia:', error);
+      throw error;
     }
   }
 
@@ -201,12 +196,7 @@ export class HomePage implements OnInit {
       console.log('Tareas cercanas cargadas:', this.tareasCercanas);
     } catch (error) {
       console.error('Error al cargar tareas cercanas:', error);
-      const alert = await this.alertController.create({
-        header: 'Error',
-        message: 'No se pudieron cargar las tareas cercanas',
-        buttons: ['OK']
-      });
-      await alert.present();
+      await this.mostrarError('No se pudieron cargar las tareas cercanas');
     }
   }
 }
