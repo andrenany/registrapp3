@@ -113,7 +113,7 @@
       padding: 0;
   
       ion-item {
-        --background: rgba(255, 255, 255, 0.05);
+        --background: rgba(223, 211, 211, 0.995);
         --border-radius: 8px;
         margin-bottom: 12px;
   
@@ -201,3 +201,8 @@
     padding-bottom: calc(env(safe-area-inset-bottom) + 5px);
   }
   
+  .add-button {
+    --color: white;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }
