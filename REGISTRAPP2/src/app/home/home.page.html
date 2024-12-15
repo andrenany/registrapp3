@@ -9,72 +9,65 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="background" *ngIf="!qr.scan">
-  <div class="welcome-section">
-    <h2>¡Hola {{ email }}!</h2>
-    <p class="user-type">Usuario</p>
-  </div>
+<ion-content class="background" [class.scanner-active]="qr.scan">
+  <div class="content-container" [class.hidden]="qr.scan">
+    <div class="welcome-section">
+      <h2>¡Hola {{ email }}!</h2>
+      <p class="user-type">Usuario</p>
+    </div>
 
-  <!-- Barra de Progreso de Asistencia -->
-  <ion-card class="progress-card">
-    <ion-card-header>
-      <ion-card-title>Progreso de Asistencia</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <ion-progress-bar [value]="progreso" color="primary"></ion-progress-bar>
-      <p>{{ asisRegistradas }} de {{ asisTotales }} asistencias registradas</p>
-    </ion-card-content>
-  </ion-card>
+    <!-- Barra de Progreso de Asistencia -->
+    <ion-card class="progress-card">
+      <ion-card-header>
+        <ion-card-title>Progreso de Asistencia</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-progress-bar [value]="progreso" color="primary"></ion-progress-bar>
+        <p>{{ asisRegistradas }} de {{ asisTotales }} asistencias registradas</p>
+      </ion-card-content>
+    </ion-card>
 
-  <!-- Muestra el resultado del escaneo -->
-  <a [href]="qr.scanResult" target="_blank" rel="noopener noreferrer" *ngIf="qr.scanResult">
-    <h2>{{ qr.scanResult }}</h2>
-  </a>
-
-  <!-- Reuniones Pendientes -->
-  <ion-card class="meetings-card">
-    <ion-card-header>
-      <div class="header-content">
+    <!-- Reuniones Pendientes -->
+    <ion-card class="meetings-card">
+      <ion-card-header>
         <ion-card-title>Reuniones Pendientes</ion-card-title>
-      </div>
-    </ion-card-header>
-    <ion-card-content>
-      <ion-list>
-        <ion-item *ngFor="let reunion of reuniones">
-          <ion-card>
-            <ion-card-header>
-              <ion-card-title>{{ reunion.titulo }}</ion-card-title>
-              <ion-card-subtitle>{{ reunion.tipo }}</ion-card-subtitle>
-            </ion-card-header>
-            <ion-card-content>
-              <p><strong>Hora:</strong> {{ reunion.hora }}</p>
-              <p><strong>Ubicación:</strong> {{ reunion.ubicacion }}</p>
-            </ion-card-content>
-          </ion-card>
-        </ion-item>
-      </ion-list>
-    </ion-card-content>
-  </ion-card>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list>
+          <ion-item *ngFor="let reunion of reuniones">
+            <ion-card>
+              <ion-card-header>
+                <ion-card-title>{{ reunion.titulo }}</ion-card-title>
+                <ion-card-subtitle>{{ reunion.tipo }}</ion-card-subtitle>
+              </ion-card-header>
+              <ion-card-content>
+                <p><strong>Hora:</strong> {{ reunion.hora }}</p>
+                <p><strong>Ubicación:</strong> {{ reunion.ubicacion }}</p>
+              </ion-card-content>
+            </ion-card>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
 
-  <!-- Información Adicional -->
-  <ion-card class="tareas-cercanas">
-    <ion-card-header>
-      <ion-card-title>Próximas Tareas</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <ion-list>
-        <ion-item *ngFor="let tarea of tareasCercanas">
-          <ion-label>
-            <h2>{{ tarea.asignatura }}</h2>
-            <p>{{ tarea.descripcion }}</p>
-            <p><strong>Fecha:</strong> {{ tarea.dia | date: 'shortDate' }}</p>
-          </ion-label>
-        </ion-item>
-      </ion-list>
-    </ion-card-content>
-  </ion-card>
-  
-
+    <!-- Información Adicional -->
+    <ion-card class="tareas-cercanas">
+      <ion-card-header>
+        <ion-card-title>Próximas Tareas</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list>
+          <ion-item *ngFor="let tarea of tareasCercanas">
+            <ion-label>
+              <h2>{{ tarea.asignatura }}</h2>
+              <p>{{ tarea.descripcion }}</p>
+              <p><strong>Fecha:</strong> {{ tarea.dia | date: 'shortDate' }}</p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>
 
 <ion-footer>
@@ -100,4 +93,3 @@
     </ion-tabs>
   </ion-toolbar>
 </ion-footer>
-
