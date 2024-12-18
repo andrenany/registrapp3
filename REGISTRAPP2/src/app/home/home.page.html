@@ -9,7 +9,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="background" [class.scanner-active]="qr.scan">
+<ion-content class="background" *ngIf="!qr.scan">
   <div class="content-container" [class.hidden]="qr.scan">
     <div class="welcome-section">
       <h2>¡Hola {{ email }}!</h2>
