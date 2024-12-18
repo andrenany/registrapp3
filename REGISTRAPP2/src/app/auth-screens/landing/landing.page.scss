@@ -1,0 +1,71 @@
+@charset "UTF-8";
+
+.landing-background {
+  position: relative;
+  animation: glowEffect 3s infinite; /* Aplica la animación al contenedor */
+}
+
+@keyframes glowEffect {
+  0% {
+    box-shadow: 0 0 0px rgba(255, 255, 255, 0); /* Sin resplandor al inicio */
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.6), 
+                0 0 30px rgba(255, 255, 255, 0.4); /* Resplandor intermedio */
+  }
+  100% {
+    box-shadow: 0 0 0px rgba(255, 255, 255, 0); /* Vuelve al estado inicial */
+  }
+}
+
+.landing-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background-color: #2E2152; /* Color de fondo */
+  text-align: center;
+  border-radius: 15px;
+  padding: 20px; /* Añadido padding para que no esté demasiado pegado al borde */
+}
+
+.logo {
+  width: 150px;
+  margin-bottom: 20px;
+}
+
+.welcome-title {
+  font-size: 24px;
+  margin: 10px 0;
+  color: #FFFFFF; /* Texto en blanco */
+}
+
+.info-text {
+  font-size: 16px;
+  margin-bottom: 20px;
+  color: #FFFFFF; /* Texto en blanco */
+}
+
+.button {
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold; /* Letras en negrita */
+  background-color: transparent; /* Fondo transparente */
+  color: #FFFFFF; /* Letras blancas */
+  border: 2px solid rgba(255, 255, 255, 0.5); /* Bordes con color blanco transparente */
+  border-radius: 30px; /* Bordes redondeados */
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease; /* Transición suave */
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5); /* Sombra para efecto acolchado */
+}
+
+.button:hover {
+  background-color: #FFFFFF; /* Fondo blanco al pasar el mouse */
+  color: #2E2152; /* Letras morado oscuro */
+  border: 2px solid #2E2152; /* Bordes morado oscuro al hacer hover */
+  text-shadow: none; /* Elimina sombra al hacer hover */
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.8); /* Efecto glow al hacer hover */
+}

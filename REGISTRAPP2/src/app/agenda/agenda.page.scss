@@ -1,0 +1,208 @@
+:host {
+    --background-color: #2D1B69;
+    --card-background: #1E1E2E;
+    --text-color: #FFFFFF;
+    --text-secondary: rgba(255, 255, 255, 0.7);
+    --purple-accent: #8B5CF6;
+  }
+  
+  ion-header {
+    ion-toolbar {
+      --background: #1a1b1e;
+      --color: var(--text-color);
+  
+      .header-content {
+        display: flex;
+        align-items: center;
+        padding: 0 16px;
+  
+        .logo-container {
+          display: flex;
+          align-items: center;
+          margin-right: 16px;
+  
+          img {
+            width: 32px;
+            height: 32px;
+          }
+        }
+  
+        ion-title {
+          color: var(--text-color);
+          font-size: 20px;
+          padding: 0;
+          text-align: center; /* Centra el texto del título */
+        }
+      }
+    }
+  }
+  
+  .background {
+    --background: var(--background-color);
+    min-height: 100vh;
+    padding: 16px;
+  }
+  
+  .form-card, .tasks-card {
+    background: var(--card-background);
+    margin-bottom: 24px;
+    border-radius: 16px;
+    box-shadow: none;
+  }
+  
+  .form-card ion-card-header, .tasks-card ion-card-header {
+    padding: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  
+    ion-card-title {
+      color: var(--text-color);
+      font-size: 20px;
+      text-align: center; /* Centra el título de la card */
+    }
+  }
+  
+  ion-card-content {
+    padding: 20px;
+  
+    ion-item {
+      --background: rgba(255, 255, 255, 0.05);
+      --border-radius: 8px;
+      --padding-start: 12px;
+      --padding-end: 12px;
+      --inner-padding-end: 12px;
+      margin-bottom: 16px;
+  
+      ion-label {
+        color: var(--text-secondary);
+        margin-bottom: 8px;
+      }
+  
+      ion-input, ion-datetime, ion-textarea {
+        --color: var(--text-color);
+        --placeholder-color: var(--text-secondary);
+        --padding-start: 0;
+        font-size: 15px;
+        margin-top: 6px;
+      }
+    }
+  
+    .add-button {
+      margin-top: 20px;
+      height: 42px;
+      --background: var(--purple-accent);
+      --background-activated: #7c3aed;
+      --border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+  }
+  
+  .tasks-card {
+    margin-bottom: 120px; /* Aumenta el margen inferior para más espacio antes del footer */
+    padding-bottom: 50px; /* Da más espacio dentro de la sección */
+    border-radius: 16px;
+    background: var(--card-background);
+    box-shadow: none;
+  }
+  
+  .tasks-card ion-card-content {
+    padding: 24px; /* Ajusta el padding interno */
+  
+    ion-list {
+      background: transparent;
+      padding: 0;
+  
+      ion-item {
+        --background: rgba(223, 211, 211, 0.995);
+        --border-radius: 8px;
+        margin-bottom: 12px;
+  
+        ion-label {
+          h2 {
+            color: var(--purple-accent);
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 8px;
+          }
+  
+          p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin: 4px 0;
+  
+            strong {
+              color: var(--text-color);
+            }
+          }
+        }
+  
+        ion-button[color="danger"] {
+          --background: #ef4444;
+          --background-activated: #dc2626;
+          margin: 0;
+        }
+      }
+    }
+  }
+  
+  ion-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1000;
+  
+    ion-toolbar {
+      --min-height: 60px;
+      --background: #1a1b1e;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: env(safe-area-inset-bottom);
+  
+      ion-tabs {
+        ion-tab-bar {
+          --background: #1a1b1e;
+          height: 56px;
+          border-top: 1px solid rgba(255, 255, 255, 0.1);
+          padding: 4px 0;
+          display: flex;
+          align-items: center;
+  
+          ion-tab-button {
+            --color: var(--text-secondary);
+            --color-selected: var(--purple-accent);
+            --ripple-color: var(--purple-accent);
+            height: 48px;
+            position: relative;
+            top: -4px;
+  
+            ion-icon {
+              font-size: 22px;
+              margin-bottom: 2px;
+            }
+  
+            ion-label {
+              font-size: 11px;
+              font-weight: 500;
+              margin-top: 2px;
+            }
+  
+            &.tab-selected {
+              ion-icon,
+              ion-label {
+                color: var(--purple-accent);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  .ios ion-footer ion-toolbar {
+    padding-bottom: calc(env(safe-area-inset-bottom) + 5px);
+  }
+  
+  .add-button {
+    --color: white;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }

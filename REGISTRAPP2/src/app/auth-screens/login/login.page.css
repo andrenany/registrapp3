@@ -1,0 +1,144 @@
+@charset "UTF-8";
+:host .background-image {
+  background-image: url("/assets/images/imagen3.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0;
+}
+
+ion-content {
+  --ion-background-color: transparent;
+  --ion-text-color: $text-color;
+}
+
+h1, p, ion-label, ion-input, ion-text {
+  color: white !important;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+  color: black !important;
+  font-weight: bold !important;
+}
+
+p {
+  color: black !important;
+  font-weight: bold !important;
+}
+
+ion-card {
+  width: 80%;
+  max-width: 400px;
+  background-color: rgb(0, 0, 0);
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+  margin: 20px auto;
+}
+ion-card ion-card-header ion-title {
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+}
+ion-card ion-card-content {
+  padding: 20px;
+}
+ion-card ion-card-content ion-item {
+  --background: transparent;
+  --border-color: $text-color;
+  --padding-start: 0;
+  --inner-padding-end: 0;
+}
+ion-card ion-card-content ion-item ion-label {
+  opacity: 1;
+  color: white;
+  font-weight: bold;
+}
+ion-card ion-card-content ion-item ion-input {
+  --placeholder-color: $text-color;
+  --placeholder-opacity: 0.7;
+}
+ion-card ion-card-content ion-button {
+  --background: $button-bg;
+  --color: $button-text;
+  margin-top: 20px;
+  height: 40px;
+  font-size: 1rem;
+  color: white;
+}
+
+.crear-cuenta-btn {
+  display: block;
+  width: 70%;
+  max-width: 300px;
+  margin: 20px auto;
+  height: 40px;
+  font-size: 0.9rem;
+  border-radius: 20px;
+  animation: colorChange 3s infinite alternate;
+  color: white;
+}
+
+@keyframes colorChange {
+  0% {
+    --background: black;
+    --color: white;
+  }
+  100% {
+    --background: rgb(0, 0, 0);
+    --color: black;
+  }
+}
+.social-icons {
+  display: flex;
+  justify-content: center; /* Centra los íconos horizontalmente */
+  margin-top: 20px; /* Espaciado superior */
+}
+
+.social-icon {
+  font-size: 40px; /* Tamaño de los íconos */
+  background-color: white; /* Fondo blanco */
+  border-radius: 50%; /* Bordes redondeados */
+  padding: 10px; /* Espaciado interno */
+  margin: 0 10px; /* Espacio entre los íconos */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra suave para el ícono */
+  transition: background-color 0.3s; /* Transición para el cambio de color */
+}
+
+.social-icon:hover {
+  background-color: #FFC33F; /* Cambia a un color diferente al pasar el mouse */
+}
+
+@media screen and (max-width: 600px) {
+  ion-card {
+    width: 90%;
+  }
+  .crear-cuenta-btn {
+    width: 90%;
+  }
+}
+.input-icon {
+  font-size: 30px; /* Tamaño de los íconos */
+  color: white; /* Color blanco para los íconos */
+  margin-right: 10px; /* Espacio a la derecha del ícono */
+  background-color: transparent; /* Sin fondo para que no afecte el diseño */
+}
+
+ion-input {
+  --background: #333; /* Fondo oscuro para el input */
+  --color: white; /* Color del texto en el input */
+}
+
+.input {
+  background-color: #333; /* Cambia el color de fondo del input */
+  color: white; /* Asegura que el texto del input sea blanco */
+}
+
+.input-icon:hover {
+  color: #FFC33F; /* Cambia a un color diferente al pasar el mouse */
+}/*# sourceMappingURL=login.page.css.map */
